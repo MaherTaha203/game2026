@@ -1,0 +1,44 @@
+; ONE LINE — Godot 4.x project configuration.
+; Engine configuration file. Managed by the Godot editor; hand-edited fields are
+; documented in docs/ARCHITECTURE.md. Do not commit editor caches (.godot/).
+
+config_version=5
+
+[application]
+
+config/name="ONE LINE"
+config/description="A minimalist, offline one-stroke puzzle game."
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://assets/icon.svg"
+
+[autoload]
+
+Versions="*res://scripts/core/versions.gd"
+Localization="*res://scripts/i18n/localization.gd"
+SaveManager="*res://scripts/persistence/save_manager.gd"
+GameState="*res://scripts/state/game_state.gd"
+AudioManager="*res://scripts/services/audio_manager.gd"
+Haptics="*res://scripts/services/haptics.gd"
+ScreenManager="*res://scripts/ui/screen_manager.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation="portrait"
+
+[input_devices]
+
+; Emulation disabled: puzzle_view handles native touch (mobile) and native mouse
+; (desktop) events directly, so emulation would double-fire and double-advance.
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=false
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true

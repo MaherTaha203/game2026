@@ -40,3 +40,7 @@ desktop.ini
 # Personal/local files
 .local/
 reports/
+
+# Python caches
+__pycache__/
+*.pyc

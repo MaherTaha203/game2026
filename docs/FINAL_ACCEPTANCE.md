@@ -4,6 +4,12 @@ Evidence-based acceptance matrix (MASTER_PROMPT §87) and release gate (§60).
 Statuses are exactly one of **PASS / FAIL / UNVERIFIED / HUMAN ACTION REQUIRED**
 and are never merged or upgraded by assumption.
 
+> **Phase 2 update:** an independent audit (`PHASE_2_FINAL_AUDIT.md`) fixed the
+> daily-puzzle streak (previously dead), proved hint reliability on all 210 levels
+> via Hierholzer, added an all-210 Godot runtime load test, added mobile-geometry
+> gates, and removed an unsupported music control and overstated claims. Counts
+> below are refreshed (77 Python tests; 35/35 conformance; 836 hint checks).
+
 _Environment note: this repository was built in a headless Linux container with
 Godot 4.3 available but no display, no mobile devices, and no store credentials.
 That is why interactive/visual/on-device/store items are UNVERIFIED or HUMAN
@@ -23,8 +29,10 @@ ACTION REQUIRED — not because they were skipped._
 | Save | Save/load works | `test_save.py`; GDScript SaveManager port | **PASS** (logic) / **UNVERIFIED** (on-device I/O) |
 | Recovery | Corrupt/old/future save handled | `test_save.py` (corrupt, migrate, future, salvage) | **PASS** |
 | Migration | v1→v2 forward migration | `test_save.py::test_migration_*` | **PASS** |
-| Hint | Valid, offline, non-solving | `PuzzleSolver.find_completion` + conformance | **PASS** (logic) / **UNVERIFIED** (in-UI) |
-| Daily Puzzle | Deterministic, offline | `daily_puzzle.gd`, date-seeded | **PASS** (logic) / **UNVERIFIED** (in-UI) |
+| Hint | Valid, offline, non-solving | Hierholzer; `test_hint_campaign` + `campaign_test.gd` (836 checks, 0 fail) | **PASS** (logic) / **UNVERIFIED** (in-UI) |
+| Daily Puzzle | Deterministic pick + streak, offline | `test_daily` (11 cases) + conformance; wired to completion | **PASS** (logic) / **UNVERIFIED** (in-UI) |
+| Runtime level load | All 210 load & play in Godot | `campaign_test.gd`: 210/210, 0 failures | **PASS** |
+| Mobile geometry | Touch-friendly, on-screen | `test_geometry.py`: all 210 pass gates | **PASS** (logic) / **UNVERIFIED** (on-device) |
 | UI screens | Menu/Select/Game/Complete/Settings/Stats | scripts + scenes; clean headless boot | **PASS** (build/boot) / **UNVERIFIED** (visual) |
 | Touch input | Mobile drawing | `puzzle_view.gd` (native touch + mouse) | **UNVERIFIED** (needs device/display) |
 | Mouse input | Desktop drawing | `puzzle_view.gd` | **UNVERIFIED** (needs display) |

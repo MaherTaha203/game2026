@@ -1,0 +1,470 @@
+<title>ONE LINE Concept</title>
+<meta name="description" content="Visual product concept for the ONE LINE puzzle game, built from the real implemented screens and level data." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" />
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e1015;
+    --panel: #12141a;
+    --surface: #1b1e27;
+    --surface-2: #232735;
+    --ink: #e8eaf0;
+    --muted: #8b90a0;
+    --accent: #6ea8fe;
+    --success: #57d9a3;
+    --danger: #ff6b6b;
+    --node: #3a4152;
+    --star: #ffd166;
+    --line: #6ea8fe;
+    --display: "Manrope", system-ui, sans-serif;
+    --body: "Inter", system-ui, sans-serif;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #171a24 0%, var(--bg) 60%) fixed;
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 16px 80px; }
+  header.top { text-align: center; margin-bottom: 8px; }
+  .mark { display: inline-flex; align-items: center; gap: 12px; }
+  .mark svg { width: 44px; height: 44px; }
+  h1 {
+    font-family: var(--display); font-weight: 800; letter-spacing: 0.14em;
+    font-size: clamp(28px, 6vw, 44px); margin: 0; text-wrap: balance;
+  }
+  .tagline { color: var(--muted); font-size: 15px; margin-top: 6px; letter-spacing: 0.04em; }
+  .lede {
+    max-width: 62ch; margin: 22px auto 0; color: #c3c8d6; text-align: center;
+    font-size: 16px;
+  }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    margin: 26px auto 0;
+  }
+  .badge {
+    font-family: var(--display); font-weight: 700; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 999px; border: 1px solid transparent;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .b-impl { color: var(--success); border-color: color-mix(in srgb, var(--success) 40%, transparent); background: color-mix(in srgb, var(--success) 12%, transparent); }
+  .b-concept { color: var(--muted); border-color: color-mix(in srgb, var(--muted) 40%, transparent); background: color-mix(in srgb, var(--muted) 12%, transparent); }
+  .b-unv { color: var(--star); border-color: color-mix(in srgb, var(--star) 40%, transparent); background: color-mix(in srgb, var(--star) 12%, transparent); }
+
+  .section-title {
+    font-family: var(--display); font-weight: 700; font-size: 13px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    margin: 56px 0 18px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--surface-2);
+  }
+
+  .gallery { display: flex; flex-wrap: wrap; gap: 26px; justify-content: center; }
+  .device {
+    width: 300px; max-width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--surface-2);
+    border-radius: 30px; padding: 12px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  }
+  .screen {
+    position: relative;
+    aspect-ratio: 300 / 600;
+    background: var(--bg);
+    border-radius: 20px; overflow: hidden;
+    display: flex; flex-direction: column;
+    padding: 18px 16px;
+  }
+  .screen .tag {
+    position: absolute; top: 10px; right: 10px; z-index: 3;
+  }
+  .caption { text-align: center; margin-top: 12px; }
+  .caption b { font-family: var(--display); font-weight: 700; font-size: 14px; display: block; }
+  .caption span { color: var(--muted); font-size: 12.5px; }
+
+  /* menu */
+  .menu-title { font-family: var(--display); font-weight: 800; letter-spacing: 0.16em; font-size: 30px; text-align: center; margin-top: 34px; }
+  .menu-sub { text-align: center; color: var(--muted); font-size: 12px; letter-spacing: 0.03em; margin-top: 2px; }
+  .menu-btns { display: flex; flex-direction: column; gap: 10px; margin-top: auto; margin-bottom: 6px; }
+  .btn {
+    font-family: var(--display); font-weight: 600; font-size: 15px;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--surface-2);
+    border-radius: var(--radius); padding: 13px; text-align: center; cursor: default;
+  }
+  .btn.primary { background: color-mix(in srgb, var(--accent) 22%, var(--surface)); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+
+  /* level select */
+  .ls-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .ls-head .back { font-family: var(--display); font-weight: 600; font-size: 13px; background: var(--surface); border-radius: 10px; padding: 8px 12px; }
+  .ls-head .ttl { font-family: var(--display); font-weight: 700; letter-spacing: 0.1em; font-size: 16px; flex: 1; text-align: center; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; overflow: auto; }
+  .cell {
+    aspect-ratio: 1; border-radius: 12px; background: var(--surface);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--display); font-weight: 700; font-size: 17px; gap: 2px;
+  }
+  .cell .st { font-size: 10px; color: var(--star); letter-spacing: 1px; }
+  .cell.locked { background: #171922; color: var(--muted); }
+  .cell.locked .st { color: var(--muted); }
+  .cell.current { outline: 2px solid var(--accent); }
+
+  /* gameplay hud */
+  .hud { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .hud .lvl { font-family: var(--display); font-weight: 700; font-size: 15px; flex: 1; }
+  .hud .chip { font-family: var(--display); font-weight: 600; font-size: 11px; background: var(--surface); border-radius: 9px; padding: 6px 9px; cursor: pointer; user-select: none; }
+  .hud .chip:active { background: var(--surface-2); }
+  .play { flex: 1; position: relative; }
+  .play svg { width: 100%; height: 100%; display: block; touch-action: none; }
+  .foot { text-align: center; color: var(--muted); font-size: 12px; min-height: 18px; margin-top: 6px; }
+  .foot.win { color: var(--success); font-weight: 600; font-family: var(--display); }
+
+  /* solved */
+  .solved { align-items: center; justify-content: center; text-align: center; gap: 4px; }
+  .solved .done { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: 0.08em; }
+  .solved .stars { font-size: 46px; letter-spacing: 6px; color: var(--star); margin: 6px 0 2px; }
+  .solved .best { color: var(--success); font-family: var(--display); font-weight: 600; font-size: 13px; }
+
+  /* settings */
+  .row { display: flex; align-items: center; gap: 10px; padding: 12px 2px; border-bottom: 1px solid var(--surface-2); }
+  .row .lab { flex: 1; font-size: 14px; }
+  .toggle { width: 42px; height: 24px; border-radius: 999px; background: var(--surface-2); position: relative; }
+  .toggle.on { background: color-mix(in srgb, var(--accent) 60%, var(--surface)); }
+  .toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--ink); transition: left .15s; }
+  .toggle.on::after { left: 21px; }
+  .danger { color: var(--danger); font-family: var(--display); font-weight: 600; margin-top: 14px; text-align: center; }
+
+  /* daily */
+  .daily-card { margin-top: 8px; }
+  .streak { display: flex; gap: 8px; justify-content: center; margin: 10px 0; }
+  .dot { width: 22px; height: 22px; border-radius: 6px; background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--muted); font-family: var(--display); }
+  .dot.on { background: color-mix(in srgb, var(--accent) 40%, var(--surface)); color: var(--ink); }
+
+  /* difficulty row */
+  .diff { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .diffcard { width: 260px; max-width: 100%; background: var(--panel); border: 1px solid var(--surface-2); border-radius: 20px; padding: 14px; }
+  .diffcard svg { width: 100%; aspect-ratio: 1; background: var(--bg); border-radius: 14px; display: block; }
+  .diffcard .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+  .diffcard .meta b { font-family: var(--display); font-weight: 700; letter-spacing: 0.06em; text-transform: capitalize; }
+  .diffcard .meta span { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+  .note { max-width: 68ch; margin: 22px auto 0; color: var(--muted); font-size: 13.5px; text-align: center; }
+  .note code { color: var(--ink); background: var(--surface); padding: 1px 6px; border-radius: 6px; font-size: 12px; }
+
+  table.map { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13.5px; }
+  table.map th, table.map td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--surface-2); vertical-align: top; }
+  table.map th { font-family: var(--display); color: var(--muted); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tag-cell { white-space: nowrap; }
+  footer.foot-note { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 50px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="mark">
+      <svg viewBox="0 0 128 128" aria-hidden="true">
+        <rect width="128" height="128" rx="28" fill="#12141a"/>
+        <polyline points="34,90 34,42 94,42 64,90 94,90" fill="none" stroke="#6ea8fe" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#e8eaf0"><circle cx="34" cy="90" r="8"/><circle cx="34" cy="42" r="8"/><circle cx="94" cy="42" r="8"/><circle cx="64" cy="90" r="8"/><circle cx="94" cy="90" r="8"/></g>
+      </svg>
+      <h1>ONE&nbsp;LINE</h1>
+    </div>
+    <div class="tagline">one stroke. every line. once.</div>
+    <p class="lede">
+      A visual concept review built from the <strong>actual implemented screens and real level data</strong>
+      in this repository. Draw the demo puzzle below with your finger or mouse — it uses the same one-stroke
+      rules as the game engine. Nothing here is a redesign; badges mark what is real versus concept.
+    </p>
+    <div class="legend">
+      <span class="badge b-impl">Implemented</span>
+      <span class="badge b-concept">Concept only</span>
+      <span class="badge b-unv">Unverified on device</span>
+    </div>
+  </header>
+
+  <div class="section-title">Core screens</div>
+  <div class="gallery">
+    <!-- MAIN MENU -->
+    <figure class="device">
+      <div class="screen">
+        <span class="badge b-impl tag">Implemented</span>
+        <div class="menu-title">ONE&nbsp;LINE</div>
+        <div class="menu-sub">one stroke. every line. once.</div>
+        <div class="menu-btns">
+          <div class="btn primary">Continue</div>
+          <div class="btn">Play</div>
+          <div class="btn">Levels</div>
+          <div class="btn">Daily Puzzle</div>
+          <div class="btn">Statistics</div>
+          <div class="btn">Settings</div>
+        </div>
+      </div>
+      <figcaption class="caption"><b>Main Menu</b><span>Continue appears once progress exists</span></figcaption>
+    </figure>
+
+    <!-- LEVEL SELECT -->
+    <figure class="device">
+      <div class="screen">
+        <span class="badge b-impl tag">Implemented</span>
+        <div class="ls-head"><span class="back">Back</span><span class="ttl">LEVELS</span><span style="width:52px"></span></div>
+        <div class="grid" id="ls-grid"></div>
+      </div>
+      <figcaption class="caption"><b>Level Select</b><span>Number · stars · locked state (not colour-only)</span></figcaption>
+    </figure>
+
+    <!-- GAMEPLAY (interactive) -->
+    <figure class="device">
+      <div class="screen">
+        <span class="badge b-impl tag">Playable demo</span>
+        <div class="hud">
+          <span class="lvl">Level 5</span>
+          <span class="chip" id="undo">Undo</span>
+          <span class="chip" id="hint">Hint</span>
+          <span class="chip" id="restart">Restart</span>
+        </div>
+        <div class="play"><svg id="demo" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet"></svg></div>
+        <div class="foot" id="demo-foot">Drag from a dot to connect every line once</div>
+      </div>
+      <figcaption class="caption"><b>Gameplay</b><span>Real rules: edges used once · current node ringed</span></figcaption>
+    </figure>
+
+    <!-- SOLVED -->
+    <figure class="device">
+      <div class="screen solved">
+        <span class="badge b-impl tag">Implemented</span>
+        <div class="done">Complete!</div>
+        <div class="stars">★★★</div>
+        <div class="best">New best!</div>
+        <div class="menu-btns" style="width:100%">
+          <div class="btn primary">Next</div>
+          <div class="btn">Replay</div>
+          <div class="btn">Levels</div>
+        </div>
+      </div>
+      <figcaption class="caption"><b>Level Complete</b><span>Stars by mistakes: ★★★ = clean solve</span></figcaption>
+    </figure>
+
+    <!-- DAILY -->
+    <figure class="device">
+      <div class="screen">
+        <span class="badge b-impl tag">Implemented</span>
+        <div class="ls-head"><span class="back">Back</span><span class="ttl">DAILY</span><span style="width:52px"></span></div>
+        <div class="daily-card">
+          <svg id="daily-svg" viewBox="0 0 268 268" style="width:100%;aspect-ratio:1;background:var(--bg);border-radius:14px"></svg>
+          <div class="streak">
+            <span class="dot on">M</span><span class="dot on">T</span><span class="dot on">W</span>
+            <span class="dot">T</span><span class="dot">F</span><span class="dot">S</span><span class="dot">S</span>
+          </div>
+          <div style="text-align:center;color:var(--muted);font-size:12.5px">Current streak: <b style="color:var(--accent)">3</b></div>
+        </div>
+      </div>
+      <figcaption class="caption"><b>Daily Puzzle</b><span>Deterministic pick from the campaign — not a new graph</span></figcaption>
+    </figure>
+
+    <!-- SETTINGS -->
+    <figure class="device">
+      <div class="screen">
+        <span class="badge b-impl tag">Implemented</span>
+        <div class="ls-head"><span class="back">Back</span><span class="ttl">SETTINGS</span><span style="width:52px"></span></div>
+        <div>
+          <div class="row"><span class="lab">Sound</span><span class="toggle on"></span></div>
+          <div class="row"><span class="lab">Haptics</span><span class="toggle on"></span></div>
+          <div class="row"><span class="lab">Reduced Motion</span><span class="toggle"></span></div>
+          <div class="row"><span class="lab">High Contrast</span><span class="toggle"></span></div>
+        </div>
+        <div class="danger">Reset Progress</div>
+        <div style="color:var(--muted);font-size:11px;text-align:center;margin-top:auto">No “Music” control — no music ships in v1</div>
+      </div>
+      <figcaption class="caption"><b>Settings</b><span>Only real controls shown; reset asks to confirm</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="section-title">Difficulty examples — real levels</div>
+  <p class="note">
+    Rendered from the actual shipped level files. This shows <b>algorithmic</b> structural complexity increasing
+    across tiers. Human-perceived difficulty is <span class="badge b-unv" style="padding:2px 8px">Unverified</span>
+    until real human playtesting.
+  </p>
+  <div class="diff" id="diff-row"></div>
+
+  <div class="section-title">Concept-only ideas (not implemented)</div>
+  <div class="gallery">
+    <figure class="device">
+      <div class="screen" style="justify-content:center;text-align:center;gap:14px">
+        <span class="badge b-concept tag">Concept</span>
+        <div style="font-family:var(--display);font-weight:800;font-size:22px">Themes</div>
+        <p style="color:var(--muted);font-size:13px">A future light theme / alternate accent palettes. The engine has a high-contrast mode today; full theming is a concept.</p>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <span style="width:26px;height:26px;border-radius:7px;background:#6ea8fe"></span>
+          <span style="width:26px;height:26px;border-radius:7px;background:#57d9a3"></span>
+          <span style="width:26px;height:26px;border-radius:7px;background:#ffd166"></span>
+          <span style="width:26px;height:26px;border-radius:7px;background:#ff6b6b"></span>
+        </div>
+      </div>
+      <figcaption class="caption"><b>Palette themes</b><span>Concept — not currently implemented</span></figcaption>
+    </figure>
+    <figure class="device">
+      <div class="screen" style="justify-content:center;text-align:center;gap:14px">
+        <span class="badge b-concept tag">Concept</span>
+        <div style="font-family:var(--display);font-weight:800;font-size:22px">Level packs</div>
+        <p style="color:var(--muted);font-size:13px">Grouping the 210 levels into named chapters with their own art. Today levels are a single ordered campaign by tier.</p>
+      </div>
+      <figcaption class="caption"><b>Chapters</b><span>Concept — not currently implemented</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="section-title">Artifact ↔ implementation map</div>
+  <table class="map">
+    <thead><tr><th>Element in this artifact</th><th class="tag-cell">Status</th><th>Where it lives</th></tr></thead>
+    <tbody>
+      <tr><td>Main menu, Level select, Settings, Level complete</td><td class="tag-cell"><span class="badge b-impl">Implemented</span></td><td>scripts/ui/*.gd + scenes/*.tscn</td></tr>
+      <tr><td>Gameplay rules (this demo mirrors them)</td><td class="tag-cell"><span class="badge b-impl">Implemented</span></td><td>scripts/core/puzzle_engine.gd, solver.gd</td></tr>
+      <tr><td>Daily puzzle (deterministic pick + streak)</td><td class="tag-cell"><span class="badge b-impl">Implemented</span></td><td>scripts/services/daily_puzzle.gd, core/daily_rules.gd</td></tr>
+      <tr><td>Stars, hints, high-contrast, reduced-motion</td><td class="tag-cell"><span class="badge b-impl">Implemented</span></td><td>star_rules.gd, solver.gd, ui/style.gd</td></tr>
+      <tr><td>Exact pixel look, animations, feel on a real phone</td><td class="tag-cell"><span class="badge b-unv">Unverified</span></td><td>needs a device / display (this is an HTML approximation)</td></tr>
+      <tr><td>Palette themes, level-pack chapters</td><td class="tag-cell"><span class="badge b-concept">Concept</span></td><td>not in the codebase</td></tr>
+    </tbody>
+  </table>
+
+  <footer class="foot-note">
+    This artifact is an HTML approximation of the product, not a screenshot of the Godot build and not device QA.
+    It does not prove App Store / Google Play readiness. See <code>docs/VISUAL_GAME_CONCEPT.md</code>.
+  </footer>
+</div>
+
+<script>
+  // Real level data extracted from levels/*.json (nodes as [id,x,y], edges as [a,b]).
+  const LEVELS = {
+    demo: {"id":5,"tier":"easy","nodes":[[0,0.103,0.093],[1,0.106,0.887],[2,0.493,0.914],[3,0.906,0.083],[4,0.912,0.909]],"edges":[[0,1],[2,4],[1,2],[3,4],[0,3]],"solution":[0,1,2,4,3,0]},
+    easy: {"id":9,"tier":"easy","nodes":[[0,0.081,0.09],[1,0.08,0.5],[2,0.107,0.897],[3,0.504,0.097],[4,0.488,0.906],[5,0.916,0.082],[6,0.893,0.485]],"edges":[[0,1],[2,4],[1,2],[0,3],[4,6],[5,6],[3,5]],"solution":[0,1,2,4,6,5,3,0]},
+    advanced: {"id":107,"tier":"advanced","nodes":[[0,0.114,0.495],[1,0.378,0.112],[2,0.367,0.519],[3,0.35,0.892],[4,0.633,0.116],[5,0.627,0.48],[6,0.631,0.897],[7,0.911,0.092],[8,0.884,0.503],[9,0.917,0.917],[10,0.75,0.937]],"edges":[[9,10],[1,2],[0,4],[5,8],[1,4],[2,3],[4,5],[0,2],[5,6],[6,10],[3,6],[2,5],[6,9],[4,7],[7,8]]},
+    expert: {"id":206,"tier":"expert","nodes":[[0,0.089,0.117],[1,0.094,0.353],[2,0.108,0.627],[3,0.119,0.91],[4,0.385,0.097],[5,0.366,0.386],[6,0.383,0.627],[7,0.379,0.881],[8,0.623,0.097],[9,0.636,0.359],[10,0.617,0.643],[11,0.647,0.913],[12,0.914,0.092],[13,0.884,0.358],[14,0.903,0.651],[15,0.913,0.907],[16,0.887,0.485]],"edges":[[3,7],[12,13],[14,16],[5,10],[8,9],[0,5],[1,6],[2,5],[10,15],[13,14],[6,11],[4,5],[5,6],[5,9],[14,15],[9,10],[0,7],[1,2],[9,13],[2,7],[10,14],[1,5],[13,16],[6,7],[6,10],[5,11],[9,12],[10,13],[1,4],[2,3],[8,13],[6,9]]}
+  };
+  const C = {
+    bg: getComputedStyle(document.documentElement).getPropertyValue('--bg').trim(),
+    node: '#3a4152', ink: '#e8eaf0', accent: '#6ea8fe', star: '#ffd166', danger: '#ff6b6b'
+  };
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const ek = (a,b) => a < b ? a+"_"+b : b+"_"+a;
+
+  // ---- static level renderer (difficulty cards + daily preview) ----
+  function drawStatic(svg, level, size, solved) {
+    const pad = size * 0.11, s = size - pad*2;
+    const P = id => { const n = level.nodes.find(x=>x[0]===id); return [pad + n[1]*s, pad + n[2]*s]; };
+    const nr = Math.max(4, Math.min(9, s * minDist(level) * 0.42));
+    svg.innerHTML = "";
+    const usedSet = new Set();
+    if (solved) level.edges.forEach(e => usedSet.add(ek(e[0],e[1])));
+    for (const [a,b] of level.edges) {
+      const [x1,y1]=P(a),[x2,y2]=P(b); const used = usedSet.has(ek(a,b));
+      line(svg,x1,y1,x2,y2, used?C.accent:C.node, used?nr*0.4:nr*0.22);
+    }
+    for (const n of level.nodes) { const [x,y]=P(n[0]); circle(svg,x,y,nr, solved?C.accent:C.node); }
+  }
+  function minDist(level){ let m=1; for(let i=0;i<level.nodes.length;i++)for(let j=i+1;j<level.nodes.length;j++){const a=level.nodes[i],b=level.nodes[j];m=Math.min(m,Math.hypot(a[1]-b[1],a[2]-b[2]));} return Math.max(m,0.02); }
+  function line(svg,x1,y1,x2,y2,color,w){ const l=document.createElementNS(SVGNS,'line'); l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke',color);l.setAttribute('stroke-width',w);l.setAttribute('stroke-linecap','round'); svg.appendChild(l); return l; }
+  function circle(svg,x,y,r,fill){ const c=document.createElementNS(SVGNS,'circle'); c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);c.setAttribute('fill',fill); svg.appendChild(c); return c; }
+
+  // difficulty cards
+  const diffRow = document.getElementById('diff-row');
+  [["easy","Easy"],["advanced","Advanced"],["expert","Expert"]].forEach(([key,label])=>{
+    const lv = LEVELS[key];
+    const card = document.createElement('figure'); card.className='diffcard';
+    const svg = document.createElementNS(SVGNS,'svg'); svg.setAttribute('viewBox','0 0 260 260');
+    card.appendChild(svg);
+    const meta = document.createElement('div'); meta.className='meta';
+    meta.innerHTML = `<b>${label}</b><span>${lv.nodes.length} nodes · ${lv.edges.length} lines</span>`;
+    card.appendChild(meta);
+    diffRow.appendChild(card);
+    drawStatic(svg, lv, 260, true);
+  });
+  drawStatic(document.getElementById('daily-svg'), LEVELS.easy, 268, false);
+
+  // level select grid (illustrative states, structure is real)
+  const grid = document.getElementById('ls-grid');
+  const states = [[3],[3],[2],[1],[3],[2],[0,'cur'],['lock'],['lock'],['lock'],['lock'],['lock']];
+  states.forEach((st,i)=>{
+    const c=document.createElement('div'); c.className='cell';
+    if (st[0]==='lock'){ c.classList.add('locked'); c.innerHTML = `✕<span class="st">Locked</span>`; }
+    else { if(st[1]==='cur') c.classList.add('current');
+      const s=st[0]; c.innerHTML = `${i+1}<span class="st">${'★'.repeat(s)}${'☆'.repeat(3-s)}</span>`; }
+    grid.appendChild(c);
+  });
+
+  // ---- interactive gameplay demo (mirrors runtime rules) ----
+  (function(){
+    const svg = document.getElementById('demo');
+    const foot = document.getElementById('demo-foot');
+    const level = LEVELS.demo;
+    const adj = {}; level.nodes.forEach(n=>adj[n[0]]=new Set());
+    level.edges.forEach(([a,b])=>{ adj[a].add(b); adj[b].add(a); });
+    let trail=[], used=new Set(), dragging=false, hintNode=null;
+    const size=300, pad=size*0.13, s=size-pad*2;
+    const nr = Math.max(9, Math.min(20, s*minDist(level)*0.42));
+    const P = id => { const n=level.nodes.find(x=>x[0]===id); return [pad+n[1]*s, pad+n[2]*s]; };
+    const cur = () => trail.length? trail[trail.length-1] : -1;
+    const complete = () => used.size === level.edges.length;
+
+    function canMove(to){
+      if (trail.length===0) return true;
+      const c=cur(); if(to===c) return false;
+      if(!adj[c].has(to)) return false;
+      return !used.has(ek(c,to));
+    }
+    function moveTo(to){
+      if(!canMove(to)){ flash(); return; }
+      if(trail.length===0){ trail.push(to); } else { used.add(ek(cur(),to)); trail.push(to); }
+      hintNode=null;
+      render();
+      if(complete()){ foot.textContent='Solved — one line, every edge once! ★★★'; foot.classList.add('win'); }
+    }
+    function flash(){ foot.textContent='That move would reuse or skip a line — try another way'; foot.classList.remove('win'); }
+
+    function pt(evt){ const r=svg.getBoundingClientRect(); const x=(evt.clientX-r.left)/r.width*size; const y=(evt.clientY-r.top)/r.height*size; return [x,y]; }
+    function nearest([x,y], maxd){ let best=-1,bd=maxd; for(const n of level.nodes){ const [px,py]=P(n[0]); const d=Math.hypot(px-x,py-y); if(d<bd){bd=d;best=n[0];} } return best; }
+
+    svg.addEventListener('pointerdown', e=>{ e.preventDefault(); dragging=true; svg.setPointerCapture(e.pointerId);
+      const hit=nearest(pt(e), nr*2.0);
+      if(hit>=0){ if(trail.length===0) moveTo(hit); else if(hit!==cur()) moveTo(hit); }
+    });
+    svg.addEventListener('pointermove', e=>{ if(!dragging||trail.length===0) return; const hit=nearest(pt(e), nr*1.8); if(hit>=0 && hit!==cur()) moveTo(hit); });
+    svg.addEventListener('pointerup', ()=>{ dragging=false; });
+    svg.addEventListener('pointercancel', ()=>{ dragging=false; });
+
+    document.getElementById('restart').onclick=()=>{ trail=[]; used=new Set(); hintNode=null; foot.textContent='Drag from a dot to connect every line once'; foot.classList.remove('win'); render(); };
+    document.getElementById('undo').onclick=()=>{ if(trail.length>=2){ const last=trail.pop(); used.delete(ek(trail[trail.length-1],last)); } else if(trail.length===1){ trail.pop(); } hintNode=null; render(); };
+    document.getElementById('hint').onclick=()=>{ const h=completion(); if(h.length){ hintNode=h[0]; foot.textContent='Hint: the ringed dot is a valid next move'; foot.classList.remove('win'); } else { foot.textContent='No valid move from here — undo or restart'; } render(); };
+
+    // Hierholzer completion (same idea as the runtime hint)
+    function completion(){
+      if(trail.length===0){ return [level.nodes[0][0]]; }
+      const remaining = level.edges.length - used.size; if(remaining<=0) return [];
+      const u=new Set(used); const stack=[cur()]; const circ=[];
+      while(stack.length){ const v=stack[stack.length-1]; let adv=false;
+        for(const w of [...adj[v]].sort((a,b)=>a-b)){ const k=ek(v,w); if(!u.has(k)){ u.add(k); stack.push(w); adv=true; break; } }
+        if(!adv) circ.push(stack.pop());
+      }
+      circ.reverse();
+      return circ.length===remaining+1 ? circ.slice(1) : [];
+    }
+
+    function render(){
+      svg.innerHTML="";
+      for(const [a,b] of level.edges){ const [x1,y1]=P(a),[x2,y2]=P(b); const isUsed=used.has(ek(a,b)); line(svg,x1,y1,x2,y2, isUsed?C.accent:C.node, isUsed?nr*0.42:nr*0.22); }
+      if(dragging && trail.length){ /* preview handled implicitly */ }
+      for(const n of level.nodes){ const [x,y]=P(n[0]); const visited = n[0]===cur() || [...used].some(k=>k.split('_').map(Number).includes(n[0]));
+        circle(svg,x,y,nr, visited?C.accent:C.node);
+        if(n[0]===cur()){ const ring=document.createElementNS(SVGNS,'circle'); ring.setAttribute('cx',x);ring.setAttribute('cy',y);ring.setAttribute('r',nr+6);ring.setAttribute('fill','none');ring.setAttribute('stroke',C.ink);ring.setAttribute('stroke-width',3); svg.appendChild(ring); }
+        if(n[0]===hintNode){ const ring=document.createElementNS(SVGNS,'circle'); ring.setAttribute('cx',x);ring.setAttribute('cy',y);ring.setAttribute('r',nr+11);ring.setAttribute('fill','none');ring.setAttribute('stroke',C.star);ring.setAttribute('stroke-width',3); svg.appendChild(ring); }
+      }
+    }
+    render();
+  })();
+</script>

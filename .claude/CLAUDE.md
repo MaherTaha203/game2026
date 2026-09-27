@@ -382,3 +382,33 @@ Do not optimize for appearing complete.
 Optimize for being verifiably correct.
 
 Evidence is more important than confidence.
+
+---
+
+## 21. Skills and Maintenance Tasks
+
+These additive rules complement (do not replace) the evidence, testing, and
+repository-safety rules above (§4, §7, §8, §19). They exist to keep skill and
+maintenance work safe and honest.
+
+* **Read the applicable skill before performing its task.** The available skills
+  are under `.claude/skills/` (game-development, puzzle-design, qa-testing,
+  code-review, mobile-release, release-audit, and the Godot-specific
+  godot-code-gen and godot-scene-design).
+* **Do not repeat completed phases** unless explicitly requested.
+* **Inspect Git status first and preserve unrelated changes** — never reset,
+  stash, discard, or overwrite user or unrelated work.
+* **During a skills-only or maintenance task, do not modify game logic, level
+  data, save data, or release/signing configuration.** Keep the change to the
+  task's scope (e.g. `.claude/` and documentation).
+* **Record the exact tested commit** alongside any test evidence, and classify
+  every requirement as PASS, FAIL, or UNVERIFIED (never claim a test passed
+  unless it was actually executed, and never treat a partial test as proof of a
+  complete requirement).
+* **Never claim release readiness while mandatory criteria remain UNVERIFIED.**
+* **Request authorization before destructive changes, deployment, signing,
+  publishing, or any production operation** (including `git commit`/`git push`
+  when the task says changes must be authorized first).
+* **Do not install** unreviewed plugins, MCP servers, agents, hooks, or binaries
+  just because an upstream repository recommends them; vendored skills must keep
+  their upstream license and attribution.

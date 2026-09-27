@@ -48,6 +48,20 @@ update).
 Python 3.11 standard library only (no third-party packages). Node.js is available
 in the dev environment but is not used by the game or its tooling.
 
+### Vendored Claude Code skills (developer guidance, not shipped in the app)
+
+Two Godot-4 developer skills under `.claude/skills/` are adapted from a
+third-party MIT-licensed source. They are documentation used by Claude Code while
+developing; no code from them ships in the game binary.
+
+| Skill | Source | License | Adaptation |
+|---|---|---|---|
+| `godot-code-gen` | [alexmeckes/godot-claude-skills](https://github.com/alexmeckes/godot-claude-skills) `skills/godot-code-gen` | MIT | Added frontmatter; removed physics-body movement examples unused by this project. |
+| `godot-scene-design` | [alexmeckes/godot-claude-skills](https://github.com/alexmeckes/godot-claude-skills) `skills/godot-scene-design` | MIT | Added frontmatter; trimmed platformer/3D/enemy/physics/tilemap/dialogue/collision-layer sections. |
+
+Each skill folder retains the upstream MIT license text and an adaptation note in
+its `LICENSE` file.
+
 ## Statement
 
 No asset in this repository is claimed as original if it was obtained externally;

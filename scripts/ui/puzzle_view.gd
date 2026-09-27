@@ -25,13 +25,37 @@ var _dragging := false
 var _hint_node := -1
 var _flash := 0.0            # invalid-move flash timer
 var _pad := 40.0
+var _min_norm_dist := 0.2    # min normalized node spacing (for adaptive sizing)
 
 func setup(lv: Level) -> void:
 	level = lv
 	graph = lv.to_graph()
 	engine = PuzzleEngine.new(graph)
 	engine.completed.connect(func(): completed.emit(engine.mistakes))
+	_min_norm_dist = _compute_min_norm_dist()
 	queue_redraw()
+
+func _compute_min_norm_dist() -> float:
+	var pos := level.positions()
+	var ids := pos.keys()
+	var m := 1.0
+	for i in range(ids.size()):
+		for j in range(i + 1, ids.size()):
+			m = minf(m, (pos[ids[i]] as Vector2).distance_to(pos[ids[j]]))
+	return maxf(m, 0.02)
+
+## Node radius scales with node spacing so dense (expert) levels never overlap on
+## small screens, while capped at the design radius on sparse levels.
+func _node_radius() -> float:
+	var side: float = _play_origin_and_side()[1]
+	return clampf(_min_norm_dist * side * 0.42, 8.0, Style.NODE_RADIUS)
+
+func _line_w() -> float:
+	return clampf(_node_radius() * 0.38, 3.0, Style.LINE_WIDTH)
+
+## Touch target: at least 24px even when nodes are drawn small.
+func _hit_radius() -> float:
+	return maxf(_node_radius() * 1.8, 24.0)
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -88,7 +112,7 @@ func _begin(pos: Vector2) -> void:
 	_pointer = pos
 	set_process(true)
 	_hint_node = -1
-	var hit := _nearest_node(pos, Style.NODE_RADIUS * 1.8)
+	var hit := _nearest_node(pos, _hit_radius())
 	if hit >= 0:
 		if not engine.started():
 			engine.move_to(hit)  # start
@@ -104,7 +128,7 @@ func _drag(pos: Vector2) -> void:
 	if not _dragging or not engine.started():
 		queue_redraw()
 		return
-	var hit := _nearest_node(pos, Style.NODE_RADIUS * 1.6)
+	var hit := _nearest_node(pos, _hit_radius())
 	if hit >= 0 and hit != engine.current():
 		_try_advance(hit)
 	queue_redraw()
@@ -173,30 +197,32 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	if engine == null:
 		return
+	var nr := _node_radius()
+	var lw := _line_w()
 	# Edges (unused faint, used accent).
 	for e in graph.edges:
 		var used := engine.used_edges.has(e)
 		var col := Style.line_color() if used else Style.node_color()
-		var w := Style.LINE_WIDTH if used else Style.LINE_WIDTH * 0.5
+		var w := lw if used else lw * 0.5
 		draw_line(_node_px(e.x), _node_px(e.y), col, w, true)
 
 	# Preview segment from head to finger while dragging.
 	if _dragging and engine.started():
 		draw_line(_node_px(engine.current()), _pointer,
-			Style.accent() * Color(1, 1, 1, 0.5), Style.LINE_WIDTH * 0.6, true)
+			Style.accent() * Color(1, 1, 1, 0.5), lw * 0.6, true)
 
 	# Nodes.
 	for nid in graph.node_ids:
 		var p := _node_px(nid)
 		var visited := _node_is_visited(nid)
 		var col := Style.node_visited() if visited else Style.node_color()
-		draw_circle(p, Style.NODE_RADIUS, col)
+		draw_circle(p, nr, col)
 		# Current head: ring (shape cue, not color-only).
 		if nid == engine.current():
-			draw_arc(p, Style.NODE_RADIUS + 8.0, 0, TAU, 32, Style.ink(), 4.0, true)
+			draw_arc(p, nr + 8.0, 0, TAU, 32, Style.ink(), 4.0, true)
 		# Hint: dashed ring.
 		if nid == _hint_node:
-			draw_arc(p, Style.NODE_RADIUS + 14.0, 0, TAU, 24, Style.STAR, 4.0, true)
+			draw_arc(p, nr + 14.0, 0, TAU, 24, Style.STAR, 4.0, true)
 
 	# Invalid flash overlay (shape/brightness, not color-only).
 	if _flash > 0.0:

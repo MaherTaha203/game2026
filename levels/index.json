@@ -1442,15 +1442,15 @@
       "id": 206,
       "file": "level_0206.json",
       "tier": "expert",
-      "difficulty_score": 68.175,
-      "edges": 31
+      "difficulty_score": 68.075,
+      "edges": 32
     },
     {
       "id": 207,
       "file": "level_0207.json",
       "tier": "expert",
-      "difficulty_score": 68.275,
-      "edges": 32
+      "difficulty_score": 68.175,
+      "edges": 31
     },
     {
       "id": 208,
@@ -1470,8 +1470,8 @@
       "id": 210,
       "file": "level_0210.json",
       "tier": "expert",
-      "difficulty_score": 68.575,
-      "edges": 31
+      "difficulty_score": 68.275,
+      "edges": 32
     }
   ]
 }

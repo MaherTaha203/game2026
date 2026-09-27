@@ -9,6 +9,7 @@ graph signature plus an exact isomorphism confirmation for signature collisions.
 from __future__ import annotations
 
 import itertools
+import math
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Set, Tuple
 
@@ -36,6 +37,46 @@ MIN_EDGES_BY_TIER = {
 # Tiers at/above this index must contain at least one decision point (branch).
 _BRANCH_REQUIRED_FROM = 2  # "normal" and harder
 QUALITY_THRESHOLD = 0.45
+
+# Mobile geometry gates (normalized coordinates). These keep levels touch-friendly
+# and on-screen on small phones (audit §9). Node radius is rendered adaptively at
+# runtime (scripts/ui/puzzle_view.gd), but nodes must still be far enough apart to
+# be individually tappable and edges long enough to trace on a ~320px screen.
+MIN_NODE_DISTANCE = 0.09   # ~28px apart on a 320px play area
+MIN_EDGE_LENGTH = 0.09
+PLAY_MIN = 0.02            # bounding box must stay inside the playable area
+PLAY_MAX = 0.98
+
+
+def check_geometry(graph: Graph) -> Tuple[bool, List[str]]:
+    """Return ``(ok, reasons)`` for the mobile-geometry gates.
+
+    Checks minimum pairwise node distance, minimum edge length, and that the
+    whole graph stays within the playable area.
+    """
+    reasons: List[str] = []
+    nodes = graph.nodes
+    # bounding box
+    for n in nodes:
+        if not (PLAY_MIN <= n.x <= PLAY_MAX) or not (PLAY_MIN <= n.y <= PLAY_MAX):
+            reasons.append(f"node {n.id} outside playable area ({n.x:.3f},{n.y:.3f})")
+            break
+    # min pairwise node distance
+    min_nd = 9.0
+    for i in range(len(nodes)):
+        for j in range(i + 1, len(nodes)):
+            d = math.dist((nodes[i].x, nodes[i].y), (nodes[j].x, nodes[j].y))
+            min_nd = min(min_nd, d)
+    if nodes and min_nd < MIN_NODE_DISTANCE:
+        reasons.append(f"nodes too close ({min_nd:.3f} < {MIN_NODE_DISTANCE})")
+    # min edge length
+    pos = {n.id: (n.x, n.y) for n in nodes}
+    min_el = 9.0
+    for a, b in graph.edges:
+        min_el = min(min_el, math.dist(pos[a], pos[b]))
+    if graph.edges and min_el < MIN_EDGE_LENGTH:
+        reasons.append(f"edge too short ({min_el:.3f} < {MIN_EDGE_LENGTH})")
+    return (len(reasons) == 0), reasons
 
 
 def score_quality(graph: Graph, metrics: DifficultyMetrics) -> QualityResult:
@@ -75,6 +116,13 @@ def score_quality(graph: Graph, metrics: DifficultyMetrics) -> QualityResult:
     if v > 0 and e / v < 0.9:
         reasons.append(f"sparse graph (E/V={e / v:.2f}) reads as disconnected clutter")
         score -= 0.2
+
+    # Mobile geometry gates (hard): spacing, edge length, on-screen bounds.
+    geo_ok, geo_reasons = check_geometry(graph)
+    if not geo_ok:
+        reasons.extend(geo_reasons)
+        score -= 0.4
+        hard_fail = True
 
     score = max(0.0, min(1.0, round(score, 3)))
     ok = (score >= QUALITY_THRESHOLD) and not hard_fail

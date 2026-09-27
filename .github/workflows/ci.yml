@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+# ONE LINE CI (MASTER_PROMPT §24). Reliable and understandable: it runs the
+# authoritative Python engine tests, validates & playtests every shipped level,
+# and — using a downloaded Godot 4.3 headless binary — parse-checks all GDScript,
+# runs the runtime conformance suite, and boots the project. No secrets required.
+
+jobs:
+  python-engine:
+    name: Python engine, level validation & playtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit tests (stdlib unittest, no deps)
+        run: python -m unittest discover -s tests/python -t .
+      - name: Validate all levels
+        run: python tools/validate_levels.py
+      - name: Solve / playtest all levels
+        run: python tools/solve_levels.py
+      - name: Difficulty progression report
+        run: python tools/difficulty_report.py
+      - name: Verify level set is reproducible from the generator
+        run: |
+          python tools/generate_levels.py --out /tmp/regen
+          # index.json must match the committed campaign (deterministic generation).
+          diff <(python -c "import json;print(json.dumps(json.load(open('levels/index.json')),sort_keys=True))") \
+               <(python -c "import json;print(json.dumps(json.load(open('/tmp/regen/index.json')),sort_keys=True))")
+
+  godot-runtime:
+    name: Godot parse-check, conformance & boot
+    runs-on: ubuntu-latest
+    env:
+      GODOT_VERSION: "4.3"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Godot ${{ env.GODOT_VERSION }} headless
+        run: |
+          URL="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          curl -sSL -o godot.zip "$URL"
+          unzip -q godot.zip
+          mv Godot_v${GODOT_VERSION}-stable_linux.x86_64 godot
+          chmod +x godot
+      - name: Import project (parse-checks every script)
+        run: |
+          ./godot --headless --editor --quit --path . 2>&1 | tee import.log || true
+          if grep -qE "SCRIPT ERROR|Parse Error|Compile Error|Failed to load script" import.log; then
+            echo "::error::GDScript parse/compile errors found"; exit 1
+          fi
+      - name: GDScript conformance tests
+        run: ./godot --headless --path . --script tests/gdscript/run_tests.gd
+      - name: Boot smoke test (no runtime errors)
+        run: |
+          timeout 8 ./godot --headless --path . 2>&1 | tee boot.log || true
+          if grep -qE "SCRIPT ERROR|ERROR: .*res://" boot.log; then
+            echo "::error::runtime errors on boot"; exit 1
+          fi

@@ -99,7 +99,9 @@ class _UnionFind:
 
 def _spanning_tree(rng: random.Random, node_ids, candidate_edges):
     """Randomized Kruskal spanning tree over candidate edges."""
-    edges = list(candidate_edges)
+    # Sort first so ordering is independent of set-iteration order across
+    # environments; the shuffle then makes it deterministic given the seed.
+    edges = sorted(candidate_edges)
     rng.shuffle(edges)
     uf = _UnionFind(node_ids)
     tree: List[Tuple[int, int]] = []
@@ -197,7 +199,7 @@ def generate_graph(seed: int, config: GenConfig) -> Optional[Graph]:
     tree = _spanning_tree(rng, node_ids, candidate)
     edges: Set[Tuple[int, int]] = set(tree)
 
-    remaining = [e for e in candidate if e not in edges]
+    remaining = sorted(e for e in candidate if e not in edges)
     rng.shuffle(remaining)
     extra_count = int(round(config.extra_edge_ratio * len(tree)))
     for e in remaining[:extra_count]:

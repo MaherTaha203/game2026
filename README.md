@@ -1,67 +1,105 @@
 # ONE LINE
 
-ONE LINE is a minimalist, premium, offline-first mobile puzzle game for Android and iOS,
-built with **Godot 4.x** and **GDScript**.
+A minimalist, premium, **offline-first** one-stroke puzzle game for Android and
+iOS, built with **Godot 4.x** and **GDScript**. Draw a single continuous line that
+covers every connection exactly once.
 
-The player draws a single continuous path through a graph, completing each puzzle
-according to the level's defined rules. See [`docs/GAME_RULES.md`](docs/GAME_RULES.md)
-for the canonical rules.
-
-## Product Constraints
-
-ONE LINE is deliberately scoped as a one-time paid, offline game. It has **no**
-ads, subscriptions, in-app purchases, virtual currencies, accounts, backend,
-online multiplayer, leaderboards, chat/social systems, or runtime AI.
-See [`.claude/CLAUDE.md`](.claude/CLAUDE.md) section 2 for the full list.
-
-## Repository Layout
-
-```text
-ONE-LINE/
-├── .claude/                 # Claude Code project instructions and skills
-│   ├── CLAUDE.md            # Authoritative project instructions
-│   └── skills/              # Task-specific skills (see below)
-├── docs/                    # Project rules and standards
-│   ├── GAME_RULES.md        # Canonical gameplay rules (authoritative)
-│   ├── ARCHITECTURE_RULES.md
-│   ├── TESTING_STRATEGY.md
-│   ├── LEVEL_QUALITY.md
-│   ├── QUALITY_GATES.md
-│   ├── DEFINITION_OF_DONE.md
-│   └── RELEASE_RULES.md
-├── assets/                  # Game assets
-├── tests/                   # Automated tests
-├── README.md
-└── .gitignore
-```
-
-## Claude Code Skills
-
-The `.claude/skills/` directory contains the engineering skills that govern how
-work is done on this project:
-
-| Skill | Purpose |
-| --- | --- |
-| `game-development` | Godot 4.x / GDScript implementation rules. |
-| `puzzle-design` | Level design, validation, and curation standards. |
-| `qa-testing` | Systematic, evidence-based verification. |
-| `code-review` | Correctness, security, performance, and maintainability review. |
-| `mobile-release` | Android / iOS release preparation. |
-| `release-audit` | Final evidence-based release-readiness audit. |
-
-## Engineering Principles
-
-Priorities, in order: **correctness, reliability, maintainability, testability,
-performance, user experience, visual polish, simplicity.**
-
-Evidence is more important than confidence. A feature is not "done" until it is
-implemented, tested, integrated, and documented. Status is reported using
-`PASS` / `FAIL` / `UNVERIFIED` / `HUMAN ACTION REQUIRED` — never fabricated.
-
-See [`docs/DEFINITION_OF_DONE.md`](docs/DEFINITION_OF_DONE.md) and
-[`docs/QUALITY_GATES.md`](docs/QUALITY_GATES.md) for the completion standards.
+One-time purchase · no ads · no subscriptions · no in-app purchases · no accounts ·
+no backend · works fully offline.
 
 ## Status
 
-Project scaffolding and governance documents only. The game implementation has
-not yet started. Status: **UNVERIFIED** — no runtime, levels, or tests exist yet.
+Software and content complete and verified where the environment allows; store
+submission and on-device QA require a human (see
+[`docs/HUMAN_ACTION_REQUIRED.md`](docs/HUMAN_ACTION_REQUIRED.md) and
+[`docs/FINAL_ACCEPTANCE.md`](docs/FINAL_ACCEPTANCE.md)).
+
+Verified in CI-equivalent runs: **59** Python tests pass · **210/210** levels
+validate · **210/210** solved & runtime-accepted · GDScript **23/23** conformance ·
+clean headless boot. Interactive/visual/on-device and signed builds are
+**UNVERIFIED** (need a display / devices / credentials).
+
+## What the game is
+
+The canonical rules (one-stroke / Eulerian trail, star model, hints, daily puzzle)
+are in [`docs/GAME_RULES.md`](docs/GAME_RULES.md). Design intent is in
+[`docs/GAME_DESIGN.md`](docs/GAME_DESIGN.md).
+
+## Repository layout
+
+```
+project.godot            Godot 4.x project (portrait, mobile)
+export_presets.cfg       Android/iOS export config (placeholders, no secrets)
+scenes/                  Thin scene wrappers (Main + 6 screens)
+scripts/
+  core/                  PuzzleGraph, PuzzleEngine, StarRules, PuzzleSolver
+  data/                  Level, LevelLoader, LevelValidator
+  state/                 GameState (autoload)
+  persistence/           SaveManager (autoload)
+  services/              AudioManager, Haptics, DailyPuzzle
+  ui/                    Style, ScreenManager, screens, PuzzleView
+  i18n/                  Localization (autoload)
+levels/                  210 curated JSON levels + index.json
+assets/                  Original icon (SVG) + procedural SFX (WAV)
+tools/                   Python engine (oneline/) + CLIs (generate/validate/solve/…)
+tests/
+  python/                59 unit tests (stdlib unittest)
+  gdscript/              Godot headless conformance suite
+docs/                    Rules, design, architecture, release, privacy, audits
+.github/workflows/ci.yml CI (Python + Godot headless)
+```
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the layered design and the
+"one rule set, two engines" approach.
+
+## How to run
+
+Open the project in **Godot 4.3** and press Play, or headless:
+
+```bash
+godot --headless --editor --quit --path .   # first time: imports assets
+godot --path .                              # run the game
+```
+
+## How to test
+
+```bash
+# Python engine, level validation, playtesting (no third-party deps):
+python3 -m unittest discover -s tests/python -t .
+python3 tools/validate_levels.py
+python3 tools/solve_levels.py
+python3 tools/difficulty_report.py
+
+# GDScript runtime conformance (needs a Godot 4.3 binary):
+godot --headless --path . --script tests/gdscript/run_tests.gd
+```
+
+## How to generate / validate levels
+
+```bash
+python3 tools/generate_levels.py        # deterministic: writes levels/ + index.json
+python3 tools/validate_levels.py        # structural + solvability validation
+python3 tools/solve_levels.py           # solver/playtester (runtime-rule check)
+python3 tools/gen_audio.py              # regenerate original SFX
+```
+Generation is reproducible from `(generator version, seed, config)`; CI diffs a
+fresh campaign against the committed `index.json`.
+
+## How to export (Android / iOS)
+
+See [`docs/RELEASE.md`](docs/RELEASE.md). You provide signing credentials (never
+committed); placeholders live in `export_presets.cfg`.
+
+## Documentation
+
+Rules & standards: `GAME_RULES`, `ARCHITECTURE_RULES`, `TESTING_STRATEGY`,
+`LEVEL_QUALITY`, `QUALITY_GATES`, `DEFINITION_OF_DONE`, `RELEASE_RULES`.
+Implementation & release: `GAME_DESIGN`, `ARCHITECTURE`, `RELEASE`, `PRIVACY`,
+`THIRD_PARTY_LICENSES`, `STORE_LISTING`, `STORE_ASSETS`, `DEVICE_TEST_MATRIX`,
+`FINAL_ACCEPTANCE`, `RELEASE_HISTORY`, `HUMAN_ACTION_REQUIRED`.
+
+## License / privacy
+
+The game collects no personal data and makes no network connections; see
+[`docs/PRIVACY.md`](docs/PRIVACY.md). Third-party components (Godot engine, MIT)
+are audited in [`docs/THIRD_PARTY_LICENSES.md`](docs/THIRD_PARTY_LICENSES.md).

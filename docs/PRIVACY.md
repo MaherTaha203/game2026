@@ -23,7 +23,7 @@ below.
 ## What the game stores (locally only)
 
 * Level progress (unlocked/completed levels, best star ratings, best mistakes).
-* Settings (sound, music, haptics, reduced motion, high contrast, language).
+* Settings (sound, haptics, reduced motion, high contrast, language).
 * Local statistics (puzzles completed, stars, streaks, play time).
 * Daily-puzzle local completion/streak.
 

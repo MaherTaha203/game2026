@@ -25,7 +25,7 @@ func _ready() -> void:
 
 	if bool(result.get("improved", false)):
 		var improved := Label.new()
-		improved.text = "New best!"
+		improved.text = Localization.t("new_best")
 		improved.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		improved.add_theme_color_override("font_color", Style.SUCCESS)
 		improved.add_theme_font_size_override("font_size", Style.BODY_SIZE)

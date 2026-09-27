@@ -17,7 +17,7 @@ func _ready() -> void:
 	col.add_child(title)
 
 	var subtitle := Label.new()
-	subtitle.text = "one stroke. every line. once."
+	subtitle.text = Localization.t("subtitle")
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle.add_theme_color_override("font_color", Style.MUTED)
 	subtitle.add_theme_font_size_override("font_size", Style.BODY_SIZE)

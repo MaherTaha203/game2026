@@ -24,8 +24,10 @@ func _ready() -> void:
 	header.add_child(spacer)
 	root.add_child(header)
 
+	# Note: no "music" toggle — no music track ships in v1 (a control for a
+	# non-existent feature is misleading). The save key is retained for a future
+	# update but is not shown.
 	root.add_child(_toggle("sound", "sound"))
-	root.add_child(_toggle("music", "music"))
 	root.add_child(_toggle("haptics", "haptics"))
 	root.add_child(_toggle("reduced_motion", "reduced_motion"))
 	root.add_child(_toggle("high_contrast", "high_contrast"))

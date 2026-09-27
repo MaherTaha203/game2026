@@ -114,7 +114,7 @@ func _show_error() -> void:
 	add_child(center)
 	var col := VBoxContainer.new()
 	center.add_child(col)
-	var msg := Style.make_title("Level unavailable", Style.H2_SIZE)
+	var msg := Style.make_title(Localization.t("level_unavailable"), Style.H2_SIZE)
 	col.add_child(msg)
 	var back := Style.make_button(Localization.t("back"))
 	back.pressed.connect(func(): ScreenManager.goto("levels"))

@@ -51,8 +51,9 @@ Thresholds are stored per level and are deterministic. Best rating never regress
   versions (documented; never presented as globally synchronized).
 * **Statistics** — local-only lifetime figures (completed, stars, perfect,
   streaks). Never transmitted.
-* **Accessibility** — high-contrast mode, reduced-motion, sound/music/haptics
+* **Accessibility** — high-contrast mode, reduced-motion, sound and haptics
   toggles, large touch targets, and state cues that never rely on color alone.
+  (No music ships in v1; there is no music control.)
 
 ## Visual identity
 

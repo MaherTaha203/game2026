@@ -12,6 +12,9 @@ var language := "en"
 const STRINGS := {
 	"en": {
 		"app_title": "ONE LINE",
+		"subtitle": "one stroke. every line. once.",
+		"new_best": "New best!",
+		"level_unavailable": "Level unavailable",
 		"play": "Play",
 		"continue": "Continue",
 		"level_select": "Levels",
@@ -28,7 +31,6 @@ const STRINGS := {
 		"replay": "Replay",
 		"next": "Next",
 		"sound": "Sound",
-		"music": "Music",
 		"haptics": "Haptics",
 		"reduced_motion": "Reduced Motion",
 		"high_contrast": "High Contrast",

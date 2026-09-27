@@ -17,8 +17,9 @@ ONE LINE
 ONE LINE is a calm, minimalist puzzle game. Draw a single continuous line that
 covers every connection exactly once. Simple to learn, satisfying to master.
 
-- 210 hand-curated levels across six difficulty tiers, from gentle tutorials to
-  expert challenges.
+- 210 deterministically generated, validated, deduplicated and algorithmically
+  curated levels across six difficulty tiers, from gentle tutorials to expert
+  challenges.
 - Learn by playing — no long tutorials.
 - A daily puzzle that works completely offline.
 - Optional hints that never solve the puzzle for you.
@@ -35,7 +36,7 @@ No account required. Works fully offline.
 * Offline daily puzzle
 * Hints, undo, restart
 * High-contrast and reduced-motion accessibility options
-* Sound, music, and haptics toggles
+* Sound and haptics toggles
 
 ## Positioning
 

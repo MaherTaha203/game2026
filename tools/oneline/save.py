@@ -17,11 +17,15 @@ Robustness guarantees:
 from __future__ import annotations
 
 import copy
+import datetime
 import json
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, List, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from .version import APP_VERSION, SAVE_DATA_VERSION
+
+# Keep completed_dates bounded so the save cannot grow without limit.
+MAX_COMPLETED_DATES = 400
 
 
 def default_settings() -> Dict[str, Any]:
@@ -303,3 +307,63 @@ def record_completion(
 
 def is_unlocked(save: Dict[str, Any], level_id: int) -> bool:
     return level_id <= save["progress"]["unlocked_max"]
+
+
+# --------------------------------------------------------------------------
+# Daily puzzle streak logic (pure) — mirrored in SaveManager.gd
+# --------------------------------------------------------------------------
+def _is_consecutive(prev_date: str, cur_date: str) -> bool:
+    """True if cur_date is exactly the day after prev_date (ISO YYYY-MM-DD)."""
+    try:
+        p = datetime.date.fromisoformat(prev_date)
+        c = datetime.date.fromisoformat(cur_date)
+    except (ValueError, TypeError):
+        return False
+    return c == p + datetime.timedelta(days=1)
+
+
+def daily_already_completed(save: Dict[str, Any], date_str: str) -> bool:
+    return date_str in save.get("daily", {}).get("completed_dates", [])
+
+
+def record_daily_completion(save: Dict[str, Any], date_str: str) -> Dict[str, Any]:
+    """Record a Daily Puzzle completion for ``date_str`` (pure; returns new dict).
+
+    Rules (docs/GAME_RULES.md §11):
+    * Completing the same date twice is a no-op (no double count, no streak bump).
+    * A completion on the day after ``last_date`` extends the streak by 1.
+    * A completion after a gap (or with a non-consecutive/backward date) resets
+      the streak to 1.
+    * ``best_streak`` never decreases. The streak is mirrored into ``stats`` so the
+      Statistics screen and the daily system agree (single displayed value).
+
+    The Daily Puzzle deliberately does NOT touch campaign progression or unlock
+    campaign levels.
+    """
+    save = copy.deepcopy(save)
+    daily = save.setdefault("daily", default_daily())
+    completed = daily.setdefault("completed_dates", [])
+
+    if date_str in completed:
+        return save  # idempotent for the same day
+
+    last = daily.get("last_date")
+    if last is None:
+        new_streak = 1
+    elif _is_consecutive(str(last), date_str):
+        new_streak = int(daily.get("streak", 0)) + 1
+    else:
+        new_streak = 1  # missed a day, or non-consecutive/backward clock
+
+    daily["streak"] = new_streak
+    daily["best_streak"] = max(int(daily.get("best_streak", 0)), new_streak)
+    daily["last_date"] = date_str
+    completed.append(date_str)
+    if len(completed) > MAX_COMPLETED_DATES:
+        del completed[: len(completed) - MAX_COMPLETED_DATES]
+
+    # Mirror into stats so the Stats screen shows the same streak.
+    stats = save.setdefault("stats", default_stats())
+    stats["current_streak"] = new_streak
+    stats["best_streak"] = max(int(stats.get("best_streak", 0)), new_streak)
+    return save

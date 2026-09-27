@@ -16,6 +16,7 @@ func _init() -> void:
 	_test_engine()
 	_test_stars()
 	_test_solver()
+	_test_daily()
 	print("GDScript conformance: %d checks, %d failures" % [_checks, _failures])
 	quit(1 if _failures > 0 else 0)
 
@@ -78,3 +79,33 @@ func _test_solver() -> void:
 	_check(trail.size() == 4, "solver trail length E+1")
 	var completion := PuzzleSolver.find_completion(_triangle(), {}, -1)
 	_check(completion.size() >= 1, "completion suggests a start")
+
+func _fresh_daily() -> Dictionary:
+	return {"last_date": null, "streak": 0, "best_streak": 0, "completed_dates": []}
+
+func _test_daily() -> void:
+	_check(DailyRules.is_consecutive("2026-09-25", "2026-09-26"), "consecutive days")
+	_check(not DailyRules.is_consecutive("2026-09-25", "2026-09-27"), "gap not consecutive")
+	_check(DailyRules.is_consecutive("2026-02-28", "2026-03-01"), "month rollover")
+
+	var daily := _fresh_daily()
+	var stats := {"current_streak": 0, "best_streak": 0}
+	_check(DailyRules.apply_completion(daily, stats, "2026-09-25"), "first completion is new")
+	DailyRules.apply_completion(daily, stats, "2026-09-26")
+	DailyRules.apply_completion(daily, stats, "2026-09-27")
+	_check(int(daily["streak"]) == 3, "streak builds to 3")
+	_check(int(daily["best_streak"]) == 3, "best streak 3")
+	_check(int(stats["current_streak"]) == 3, "stats streak mirrored")
+
+	# Same-day replay is a no-op.
+	_check(not DailyRules.apply_completion(daily, stats, "2026-09-27"), "same day not new")
+	_check(int(daily["streak"]) == 3, "same-day replay no bump")
+
+	# Gap resets current but keeps best.
+	DailyRules.apply_completion(daily, stats, "2026-09-30")
+	_check(int(daily["streak"]) == 1, "gap resets streak")
+	_check(int(daily["best_streak"]) == 3, "best streak preserved after gap")
+
+	# Backward date resets, does not crash.
+	DailyRules.apply_completion(daily, stats, "2026-09-20")
+	_check(int(daily["streak"]) == 1, "backward date resets")

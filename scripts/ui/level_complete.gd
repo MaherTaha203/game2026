@@ -31,6 +31,15 @@ func _ready() -> void:
 		improved.add_theme_font_size_override("font_size", Style.BODY_SIZE)
 		col.add_child(improved)
 
+	if bool(result.get("is_daily", false)):
+		var streak := Label.new()
+		var days := int(result.get("streak", 0))
+		streak.text = "%s: %d" % [Localization.t("stat_streak"), days]
+		streak.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		streak.add_theme_color_override("font_color", Style.accent())
+		streak.add_theme_font_size_override("font_size", Style.BODY_SIZE)
+		col.add_child(streak)
+
 	var spacer := Control.new()
 	spacer.custom_minimum_size = Vector2(0, Style.GAP_M)
 	col.add_child(spacer)

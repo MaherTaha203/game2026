@@ -97,9 +97,12 @@ func _on_completed(mistakes: int) -> void:
 	AudioManager.play("complete")
 	Haptics.success()
 	var level := LevelLoader.load_level(GameState.current_level_id)
-	GameState.complete_level(
-		GameState.current_level_id, mistakes,
-		level.three_max_mistakes, level.two_max_mistakes)
+	if GameState.is_daily:
+		GameState.complete_daily(mistakes, level.three_max_mistakes, level.two_max_mistakes)
+	else:
+		GameState.complete_level(
+			GameState.current_level_id, mistakes,
+			level.three_max_mistakes, level.two_max_mistakes)
 	# Brief pause so the completion is felt before transitioning.
 	var delay := 0.0 if Style.reduced_motion() else 0.45
 	await get_tree().create_timer(delay).timeout

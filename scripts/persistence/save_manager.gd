@@ -243,6 +243,18 @@ func reset_progress() -> void:
 	save_game()
 	progress_changed.emit()
 
+# --------------------------------------------------------------------------
+# Daily puzzle streak — delegates to DailyRules (mirrors tools/oneline/save.py)
+# --------------------------------------------------------------------------
+func daily_already_completed(date_str: String) -> bool:
+	return DailyRules.already_completed(data["daily"], date_str)
+
+func record_daily_completion(date_str: String) -> void:
+	var newly := DailyRules.apply_completion(data["daily"], data["stats"], date_str)
+	if newly:
+		save_game()
+		progress_changed.emit()
+
 func set_setting(key: String, value) -> void:
 	data["settings"][key] = value
 	save_game()

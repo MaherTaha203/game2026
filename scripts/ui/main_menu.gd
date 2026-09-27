@@ -46,7 +46,7 @@ func _ready() -> void:
 	col.add_child(_menu_button("level_select", func(): ScreenManager.goto("levels")))
 	col.add_child(_menu_button("daily", func():
 		var lid := DailyPuzzle.today_level_id(GameState.total_levels)
-		GameState.select_level(lid)
+		GameState.select_daily(lid, DailyPuzzle.date_string())
 		ScreenManager.goto("game")))
 	col.add_child(_menu_button("stats", func(): ScreenManager.goto("stats")))
 	col.add_child(_menu_button("settings", func(): ScreenManager.goto("settings")))

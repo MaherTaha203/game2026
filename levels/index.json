@@ -1,0 +1,1477 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "count": 210,
+  "levels": [
+    {
+      "id": 1,
+      "file": "level_0001.json",
+      "tier": "tutorial",
+      "difficulty_score": 6.537,
+      "edges": 3
+    },
+    {
+      "id": 2,
+      "file": "level_0002.json",
+      "tier": "tutorial",
+      "difficulty_score": 6.7,
+      "edges": 2
+    },
+    {
+      "id": 3,
+      "file": "level_0003.json",
+      "tier": "tutorial",
+      "difficulty_score": 8.6,
+      "edges": 3
+    },
+    {
+      "id": 4,
+      "file": "level_0004.json",
+      "tier": "easy",
+      "difficulty_score": 8.35,
+      "edges": 4
+    },
+    {
+      "id": 5,
+      "file": "level_0005.json",
+      "tier": "easy",
+      "difficulty_score": 10.194,
+      "edges": 5
+    },
+    {
+      "id": 6,
+      "file": "level_0006.json",
+      "tier": "easy",
+      "difficulty_score": 10.5,
+      "edges": 4
+    },
+    {
+      "id": 7,
+      "file": "level_0007.json",
+      "tier": "easy",
+      "difficulty_score": 12.054,
+      "edges": 6
+    },
+    {
+      "id": 8,
+      "file": "level_0008.json",
+      "tier": "easy",
+      "difficulty_score": 13.2,
+      "edges": 5
+    },
+    {
+      "id": 9,
+      "file": "level_0009.json",
+      "tier": "easy",
+      "difficulty_score": 13.924,
+      "edges": 7
+    },
+    {
+      "id": 10,
+      "file": "level_0010.json",
+      "tier": "easy",
+      "difficulty_score": 14.3,
+      "edges": 6
+    },
+    {
+      "id": 11,
+      "file": "level_0011.json",
+      "tier": "easy",
+      "difficulty_score": 15.1,
+      "edges": 6
+    },
+    {
+      "id": 12,
+      "file": "level_0012.json",
+      "tier": "easy",
+      "difficulty_score": 15.917,
+      "edges": 7
+    },
+    {
+      "id": 13,
+      "file": "level_0013.json",
+      "tier": "easy",
+      "difficulty_score": 17.154,
+      "edges": 7
+    },
+    {
+      "id": 14,
+      "file": "level_0014.json",
+      "tier": "normal",
+      "difficulty_score": 17.8,
+      "edges": 8
+    },
+    {
+      "id": 15,
+      "file": "level_0015.json",
+      "tier": "normal",
+      "difficulty_score": 18.196,
+      "edges": 8
+    },
+    {
+      "id": 16,
+      "file": "level_0016.json",
+      "tier": "normal",
+      "difficulty_score": 19.054,
+      "edges": 8
+    },
+    {
+      "id": 17,
+      "file": "level_0017.json",
+      "tier": "normal",
+      "difficulty_score": 19.854,
+      "edges": 8
+    },
+    {
+      "id": 18,
+      "file": "level_0018.json",
+      "tier": "normal",
+      "difficulty_score": 19.854,
+      "edges": 8
+    },
+    {
+      "id": 19,
+      "file": "level_0019.json",
+      "tier": "normal",
+      "difficulty_score": 19.95,
+      "edges": 8
+    },
+    {
+      "id": 20,
+      "file": "level_0020.json",
+      "tier": "normal",
+      "difficulty_score": 19.95,
+      "edges": 8
+    },
+    {
+      "id": 21,
+      "file": "level_0021.json",
+      "tier": "normal",
+      "difficulty_score": 20.087,
+      "edges": 9
+    },
+    {
+      "id": 22,
+      "file": "level_0022.json",
+      "tier": "normal",
+      "difficulty_score": 20.954,
+      "edges": 9
+    },
+    {
+      "id": 23,
+      "file": "level_0023.json",
+      "tier": "normal",
+      "difficulty_score": 21.754,
+      "edges": 9
+    },
+    {
+      "id": 24,
+      "file": "level_0024.json",
+      "tier": "normal",
+      "difficulty_score": 21.85,
+      "edges": 9
+    },
+    {
+      "id": 25,
+      "file": "level_0025.json",
+      "tier": "normal",
+      "difficulty_score": 21.979,
+      "edges": 10
+    },
+    {
+      "id": 26,
+      "file": "level_0026.json",
+      "tier": "normal",
+      "difficulty_score": 21.979,
+      "edges": 10
+    },
+    {
+      "id": 27,
+      "file": "level_0027.json",
+      "tier": "normal",
+      "difficulty_score": 22.01,
+      "edges": 10
+    },
+    {
+      "id": 28,
+      "file": "level_0028.json",
+      "tier": "normal",
+      "difficulty_score": 22.1,
+      "edges": 9
+    },
+    {
+      "id": 29,
+      "file": "level_0029.json",
+      "tier": "normal",
+      "difficulty_score": 22.1,
+      "edges": 9
+    },
+    {
+      "id": 30,
+      "file": "level_0030.json",
+      "tier": "normal",
+      "difficulty_score": 22.475,
+      "edges": 10
+    },
+    {
+      "id": 31,
+      "file": "level_0031.json",
+      "tier": "normal",
+      "difficulty_score": 23.875,
+      "edges": 11
+    },
+    {
+      "id": 32,
+      "file": "level_0032.json",
+      "tier": "normal",
+      "difficulty_score": 23.902,
+      "edges": 11
+    },
+    {
+      "id": 33,
+      "file": "level_0033.json",
+      "tier": "normal",
+      "difficulty_score": 24.0,
+      "edges": 10
+    },
+    {
+      "id": 34,
+      "file": "level_0034.json",
+      "tier": "normal",
+      "difficulty_score": 24.0,
+      "edges": 10
+    },
+    {
+      "id": 35,
+      "file": "level_0035.json",
+      "tier": "normal",
+      "difficulty_score": 24.0,
+      "edges": 10
+    },
+    {
+      "id": 36,
+      "file": "level_0036.json",
+      "tier": "normal",
+      "difficulty_score": 24.0,
+      "edges": 10
+    },
+    {
+      "id": 37,
+      "file": "level_0037.json",
+      "tier": "normal",
+      "difficulty_score": 24.037,
+      "edges": 10
+    },
+    {
+      "id": 38,
+      "file": "level_0038.json",
+      "tier": "normal",
+      "difficulty_score": 24.037,
+      "edges": 10
+    },
+    {
+      "id": 39,
+      "file": "level_0039.json",
+      "tier": "normal",
+      "difficulty_score": 24.375,
+      "edges": 11
+    },
+    {
+      "id": 40,
+      "file": "level_0040.json",
+      "tier": "normal",
+      "difficulty_score": 24.754,
+      "edges": 11
+    },
+    {
+      "id": 41,
+      "file": "level_0041.json",
+      "tier": "normal",
+      "difficulty_score": 25.554,
+      "edges": 11
+    },
+    {
+      "id": 42,
+      "file": "level_0042.json",
+      "tier": "normal",
+      "difficulty_score": 25.775,
+      "edges": 12
+    },
+    {
+      "id": 43,
+      "file": "level_0043.json",
+      "tier": "normal",
+      "difficulty_score": 25.796,
+      "edges": 12
+    },
+    {
+      "id": 44,
+      "file": "level_0044.json",
+      "tier": "normal",
+      "difficulty_score": 26.275,
+      "edges": 12
+    },
+    {
+      "id": 45,
+      "file": "level_0045.json",
+      "tier": "normal",
+      "difficulty_score": 26.275,
+      "edges": 12
+    },
+    {
+      "id": 46,
+      "file": "level_0046.json",
+      "tier": "normal",
+      "difficulty_score": 26.302,
+      "edges": 11
+    },
+    {
+      "id": 47,
+      "file": "level_0047.json",
+      "tier": "normal",
+      "difficulty_score": 26.329,
+      "edges": 11
+    },
+    {
+      "id": 48,
+      "file": "level_0048.json",
+      "tier": "normal",
+      "difficulty_score": 27.8,
+      "edges": 12
+    },
+    {
+      "id": 49,
+      "file": "level_0049.json",
+      "tier": "normal",
+      "difficulty_score": 27.8,
+      "edges": 12
+    },
+    {
+      "id": 50,
+      "file": "level_0050.json",
+      "tier": "normal",
+      "difficulty_score": 27.8,
+      "edges": 12
+    },
+    {
+      "id": 51,
+      "file": "level_0051.json",
+      "tier": "normal",
+      "difficulty_score": 27.837,
+      "edges": 12
+    },
+    {
+      "id": 52,
+      "file": "level_0052.json",
+      "tier": "normal",
+      "difficulty_score": 27.837,
+      "edges": 12
+    },
+    {
+      "id": 53,
+      "file": "level_0053.json",
+      "tier": "normal",
+      "difficulty_score": 27.837,
+      "edges": 12
+    },
+    {
+      "id": 54,
+      "file": "level_0054.json",
+      "tier": "normal",
+      "difficulty_score": 27.837,
+      "edges": 12
+    },
+    {
+      "id": 55,
+      "file": "level_0055.json",
+      "tier": "normal",
+      "difficulty_score": 28.175,
+      "edges": 13
+    },
+    {
+      "id": 56,
+      "file": "level_0056.json",
+      "tier": "normal",
+      "difficulty_score": 28.175,
+      "edges": 13
+    },
+    {
+      "id": 57,
+      "file": "level_0057.json",
+      "tier": "normal",
+      "difficulty_score": 28.175,
+      "edges": 13
+    },
+    {
+      "id": 58,
+      "file": "level_0058.json",
+      "tier": "normal",
+      "difficulty_score": 28.175,
+      "edges": 13
+    },
+    {
+      "id": 59,
+      "file": "level_0059.json",
+      "tier": "normal",
+      "difficulty_score": 28.175,
+      "edges": 13
+    },
+    {
+      "id": 60,
+      "file": "level_0060.json",
+      "tier": "normal",
+      "difficulty_score": 28.175,
+      "edges": 13
+    },
+    {
+      "id": 61,
+      "file": "level_0061.json",
+      "tier": "normal",
+      "difficulty_score": 28.202,
+      "edges": 12
+    },
+    {
+      "id": 62,
+      "file": "level_0062.json",
+      "tier": "normal",
+      "difficulty_score": 28.202,
+      "edges": 12
+    },
+    {
+      "id": 63,
+      "file": "level_0063.json",
+      "tier": "normal",
+      "difficulty_score": 28.202,
+      "edges": 12
+    },
+    {
+      "id": 64,
+      "file": "level_0064.json",
+      "tier": "normal",
+      "difficulty_score": 28.202,
+      "edges": 12
+    },
+    {
+      "id": 65,
+      "file": "level_0065.json",
+      "tier": "normal",
+      "difficulty_score": 28.202,
+      "edges": 12
+    },
+    {
+      "id": 66,
+      "file": "level_0066.json",
+      "tier": "normal",
+      "difficulty_score": 28.229,
+      "edges": 12
+    },
+    {
+      "id": 67,
+      "file": "level_0067.json",
+      "tier": "normal",
+      "difficulty_score": 28.675,
+      "edges": 13
+    },
+    {
+      "id": 68,
+      "file": "level_0068.json",
+      "tier": "normal",
+      "difficulty_score": 28.675,
+      "edges": 13
+    },
+    {
+      "id": 69,
+      "file": "level_0069.json",
+      "tier": "normal",
+      "difficulty_score": 28.675,
+      "edges": 13
+    },
+    {
+      "id": 70,
+      "file": "level_0070.json",
+      "tier": "normal",
+      "difficulty_score": 28.675,
+      "edges": 13
+    },
+    {
+      "id": 71,
+      "file": "level_0071.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 72,
+      "file": "level_0072.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 73,
+      "file": "level_0073.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 74,
+      "file": "level_0074.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 75,
+      "file": "level_0075.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 76,
+      "file": "level_0076.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 77,
+      "file": "level_0077.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 78,
+      "file": "level_0078.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 79,
+      "file": "level_0079.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 80,
+      "file": "level_0080.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 81,
+      "file": "level_0081.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 82,
+      "file": "level_0082.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 83,
+      "file": "level_0083.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 84,
+      "file": "level_0084.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 85,
+      "file": "level_0085.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 86,
+      "file": "level_0086.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 87,
+      "file": "level_0087.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 88,
+      "file": "level_0088.json",
+      "tier": "normal",
+      "difficulty_score": 30.102,
+      "edges": 13
+    },
+    {
+      "id": 89,
+      "file": "level_0089.json",
+      "tier": "advanced",
+      "difficulty_score": 30.075,
+      "edges": 14
+    },
+    {
+      "id": 90,
+      "file": "level_0090.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 91,
+      "file": "level_0091.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 92,
+      "file": "level_0092.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 93,
+      "file": "level_0093.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 94,
+      "file": "level_0094.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 95,
+      "file": "level_0095.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 96,
+      "file": "level_0096.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 97,
+      "file": "level_0097.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 98,
+      "file": "level_0098.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 99,
+      "file": "level_0099.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 100,
+      "file": "level_0100.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 101,
+      "file": "level_0101.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 102,
+      "file": "level_0102.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 103,
+      "file": "level_0103.json",
+      "tier": "advanced",
+      "difficulty_score": 30.575,
+      "edges": 14
+    },
+    {
+      "id": 104,
+      "file": "level_0104.json",
+      "tier": "advanced",
+      "difficulty_score": 31.075,
+      "edges": 14
+    },
+    {
+      "id": 105,
+      "file": "level_0105.json",
+      "tier": "advanced",
+      "difficulty_score": 32.002,
+      "edges": 14
+    },
+    {
+      "id": 106,
+      "file": "level_0106.json",
+      "tier": "advanced",
+      "difficulty_score": 32.002,
+      "edges": 14
+    },
+    {
+      "id": 107,
+      "file": "level_0107.json",
+      "tier": "advanced",
+      "difficulty_score": 32.029,
+      "edges": 14
+    },
+    {
+      "id": 108,
+      "file": "level_0108.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 109,
+      "file": "level_0109.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 110,
+      "file": "level_0110.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 111,
+      "file": "level_0111.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 112,
+      "file": "level_0112.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 113,
+      "file": "level_0113.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 114,
+      "file": "level_0114.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 115,
+      "file": "level_0115.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 116,
+      "file": "level_0116.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 117,
+      "file": "level_0117.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 118,
+      "file": "level_0118.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 119,
+      "file": "level_0119.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 120,
+      "file": "level_0120.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 121,
+      "file": "level_0121.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 122,
+      "file": "level_0122.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 123,
+      "file": "level_0123.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 124,
+      "file": "level_0124.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 125,
+      "file": "level_0125.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 126,
+      "file": "level_0126.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 127,
+      "file": "level_0127.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 128,
+      "file": "level_0128.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 129,
+      "file": "level_0129.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 130,
+      "file": "level_0130.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 131,
+      "file": "level_0131.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 132,
+      "file": "level_0132.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 133,
+      "file": "level_0133.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 134,
+      "file": "level_0134.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 135,
+      "file": "level_0135.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 136,
+      "file": "level_0136.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 137,
+      "file": "level_0137.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 138,
+      "file": "level_0138.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 139,
+      "file": "level_0139.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 140,
+      "file": "level_0140.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 141,
+      "file": "level_0141.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 142,
+      "file": "level_0142.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 143,
+      "file": "level_0143.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 144,
+      "file": "level_0144.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 145,
+      "file": "level_0145.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 146,
+      "file": "level_0146.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 147,
+      "file": "level_0147.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 148,
+      "file": "level_0148.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 149,
+      "file": "level_0149.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 150,
+      "file": "level_0150.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 151,
+      "file": "level_0151.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 152,
+      "file": "level_0152.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 153,
+      "file": "level_0153.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 154,
+      "file": "level_0154.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 155,
+      "file": "level_0155.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 14
+    },
+    {
+      "id": 156,
+      "file": "level_0156.json",
+      "tier": "advanced",
+      "difficulty_score": 32.475,
+      "edges": 15
+    },
+    {
+      "id": 157,
+      "file": "level_0157.json",
+      "tier": "advanced",
+      "difficulty_score": 32.975,
+      "edges": 15
+    },
+    {
+      "id": 158,
+      "file": "level_0158.json",
+      "tier": "advanced",
+      "difficulty_score": 32.975,
+      "edges": 15
+    },
+    {
+      "id": 159,
+      "file": "level_0159.json",
+      "tier": "hard",
+      "difficulty_score": 44.775,
+      "edges": 21
+    },
+    {
+      "id": 160,
+      "file": "level_0160.json",
+      "tier": "hard",
+      "difficulty_score": 44.775,
+      "edges": 21
+    },
+    {
+      "id": 161,
+      "file": "level_0161.json",
+      "tier": "hard",
+      "difficulty_score": 45.175,
+      "edges": 21
+    },
+    {
+      "id": 162,
+      "file": "level_0162.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 163,
+      "file": "level_0163.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 164,
+      "file": "level_0164.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 165,
+      "file": "level_0165.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 166,
+      "file": "level_0166.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 167,
+      "file": "level_0167.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 168,
+      "file": "level_0168.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 169,
+      "file": "level_0169.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 170,
+      "file": "level_0170.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 171,
+      "file": "level_0171.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 172,
+      "file": "level_0172.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 173,
+      "file": "level_0173.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 174,
+      "file": "level_0174.json",
+      "tier": "hard",
+      "difficulty_score": 45.675,
+      "edges": 21
+    },
+    {
+      "id": 175,
+      "file": "level_0175.json",
+      "tier": "hard",
+      "difficulty_score": 45.875,
+      "edges": 21
+    },
+    {
+      "id": 176,
+      "file": "level_0176.json",
+      "tier": "hard",
+      "difficulty_score": 45.875,
+      "edges": 21
+    },
+    {
+      "id": 177,
+      "file": "level_0177.json",
+      "tier": "hard",
+      "difficulty_score": 45.875,
+      "edges": 21
+    },
+    {
+      "id": 178,
+      "file": "level_0178.json",
+      "tier": "hard",
+      "difficulty_score": 45.875,
+      "edges": 21
+    },
+    {
+      "id": 179,
+      "file": "level_0179.json",
+      "tier": "hard",
+      "difficulty_score": 45.875,
+      "edges": 21
+    },
+    {
+      "id": 180,
+      "file": "level_0180.json",
+      "tier": "hard",
+      "difficulty_score": 46.075,
+      "edges": 21
+    },
+    {
+      "id": 181,
+      "file": "level_0181.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 182,
+      "file": "level_0182.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 183,
+      "file": "level_0183.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 184,
+      "file": "level_0184.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 185,
+      "file": "level_0185.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 186,
+      "file": "level_0186.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 187,
+      "file": "level_0187.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 188,
+      "file": "level_0188.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 189,
+      "file": "level_0189.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 190,
+      "file": "level_0190.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 191,
+      "file": "level_0191.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 192,
+      "file": "level_0192.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 193,
+      "file": "level_0193.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 194,
+      "file": "level_0194.json",
+      "tier": "hard",
+      "difficulty_score": 46.175,
+      "edges": 21
+    },
+    {
+      "id": 195,
+      "file": "level_0195.json",
+      "tier": "expert",
+      "difficulty_score": 65.475,
+      "edges": 31
+    },
+    {
+      "id": 196,
+      "file": "level_0196.json",
+      "tier": "expert",
+      "difficulty_score": 66.175,
+      "edges": 31
+    },
+    {
+      "id": 197,
+      "file": "level_0197.json",
+      "tier": "expert",
+      "difficulty_score": 66.175,
+      "edges": 31
+    },
+    {
+      "id": 198,
+      "file": "level_0198.json",
+      "tier": "expert",
+      "difficulty_score": 66.375,
+      "edges": 31
+    },
+    {
+      "id": 199,
+      "file": "level_0199.json",
+      "tier": "expert",
+      "difficulty_score": 66.375,
+      "edges": 31
+    },
+    {
+      "id": 200,
+      "file": "level_0200.json",
+      "tier": "expert",
+      "difficulty_score": 66.375,
+      "edges": 31
+    },
+    {
+      "id": 201,
+      "file": "level_0201.json",
+      "tier": "expert",
+      "difficulty_score": 66.375,
+      "edges": 31
+    },
+    {
+      "id": 202,
+      "file": "level_0202.json",
+      "tier": "expert",
+      "difficulty_score": 66.775,
+      "edges": 31
+    },
+    {
+      "id": 203,
+      "file": "level_0203.json",
+      "tier": "expert",
+      "difficulty_score": 66.775,
+      "edges": 31
+    },
+    {
+      "id": 204,
+      "file": "level_0204.json",
+      "tier": "expert",
+      "difficulty_score": 66.775,
+      "edges": 31
+    },
+    {
+      "id": 205,
+      "file": "level_0205.json",
+      "tier": "expert",
+      "difficulty_score": 66.775,
+      "edges": 31
+    },
+    {
+      "id": 206,
+      "file": "level_0206.json",
+      "tier": "expert",
+      "difficulty_score": 66.775,
+      "edges": 31
+    },
+    {
+      "id": 207,
+      "file": "level_0207.json",
+      "tier": "expert",
+      "difficulty_score": 66.775,
+      "edges": 31
+    },
+    {
+      "id": 208,
+      "file": "level_0208.json",
+      "tier": "expert",
+      "difficulty_score": 66.975,
+      "edges": 32
+    },
+    {
+      "id": 209,
+      "file": "level_0209.json",
+      "tier": "expert",
+      "difficulty_score": 67.175,
+      "edges": 31
+    },
+    {
+      "id": 210,
+      "file": "level_0210.json",
+      "tier": "expert",
+      "difficulty_score": 67.275,
+      "edges": 31
+    }
+  ]
+}

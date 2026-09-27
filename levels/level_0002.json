@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "id": 2,
+  "name": "Level 2",
+  "tier": "tutorial",
+  "difficulty_score": 6.7,
+  "seed": 0,
+  "nodes": [
+    {
+      "id": 0,
+      "x": 0.1196,
+      "y": 0.0919
+    },
+    {
+      "id": 1,
+      "x": 0.1131,
+      "y": 0.8851
+    },
+    {
+      "id": 2,
+      "x": 0.8804,
+      "y": 0.0963
+    }
+  ],
+  "edges": [
+    {
+      "a": 0,
+      "b": 1
+    },
+    {
+      "a": 0,
+      "b": 2
+    }
+  ],
+  "solution_length": 2,
+  "stars": {
+    "three_max_mistakes": 0,
+    "two_max_mistakes": 1
+  },
+  "reference_solution": [
+    1,
+    0,
+    2
+  ]
+}

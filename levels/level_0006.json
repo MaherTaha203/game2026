@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "id": 6,
+  "name": "Level 6",
+  "tier": "easy",
+  "difficulty_score": 10.5,
+  "seed": 17,
+  "nodes": [
+    {
+      "id": 0,
+      "x": 0.0884,
+      "y": 0.1127
+    },
+    {
+      "id": 1,
+      "x": 0.0884,
+      "y": 0.8832
+    },
+    {
+      "id": 2,
+      "x": 0.504,
+      "y": 0.917
+    },
+    {
+      "id": 3,
+      "x": 0.8867,
+      "y": 0.101
+    },
+    {
+      "id": 4,
+      "x": 0.8906,
+      "y": 0.8951
+    }
+  ],
+  "edges": [
+    {
+      "a": 0,
+      "b": 1
+    },
+    {
+      "a": 2,
+      "b": 4
+    },
+    {
+      "a": 1,
+      "b": 2
+    },
+    {
+      "a": 3,
+      "b": 4
+    }
+  ],
+  "solution_length": 4,
+  "stars": {
+    "three_max_mistakes": 0,
+    "two_max_mistakes": 1
+  },
+  "reference_solution": [
+    0,
+    1,
+    2,
+    4,
+    3
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "id": 8,
+  "name": "Level 8",
+  "tier": "easy",
+  "difficulty_score": 13.2,
+  "seed": 0,
+  "nodes": [
+    {
+      "id": 0,
+      "x": 0.0822,
+      "y": 0.1036
+    },
+    {
+      "id": 1,
+      "x": 0.0841,
+      "y": 0.8943
+    },
+    {
+      "id": 2,
+      "x": 0.4871,
+      "y": 0.0865
+    },
+    {
+      "id": 3,
+      "x": 0.5134,
+      "y": 0.9099
+    },
+    {
+      "id": 4,
+      "x": 0.8864,
+      "y": 0.9049
+    }
+  ],
+  "edges": [
+    {
+      "a": 0,
+      "b": 1
+    },
+    {
+      "a": 3,
+      "b": 4
+    },
+    {
+      "a": 2,
+      "b": 3
+    },
+    {
+      "a": 0,
+      "b": 2
+    },
+    {
+      "a": 1,
+      "b": 3
+    }
+  ],
+  "solution_length": 5,
+  "stars": {
+    "three_max_mistakes": 0,
+    "two_max_mistakes": 2
+  },
+  "reference_solution": [
+    3,
+    1,
+    0,
+    2,
+    3,
+    4
+  ]
+}

@@ -1,0 +1,41 @@
+# Godot
+.godot/
+.import/
+
+# Godot exports
+/export/
+/exports/
+
+# Build artifacts
+/build/
+/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Secrets / signing material
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+*.pem
+*.key
+
+# Personal/local files
+.local/

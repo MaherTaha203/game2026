@@ -78,7 +78,7 @@ HUD (CanvasLayer)                # keeps UI independent of any world camera
 | `Line2D` / `Polygon2D` | Custom 2D drawing (or use `_draw()` as PuzzleView does) |
 | `AudioStreamPlayer` | Global SFX/music |
 | `Timer` | Delays, cooldowns |
-| `AnimationPlayer` / `Tween` | Property animation |
+| `AnimationPlayer` | Authored property animation |
 
 ## Layout & Containers
 

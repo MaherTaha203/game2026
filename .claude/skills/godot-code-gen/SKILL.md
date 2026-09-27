@@ -28,8 +28,9 @@ func calculate_damage(base: int, multiplier: float) -> int:
     return int(base * multiplier)
 ```
 
-Note: Godot's `min()`/`max()` return Variant and break `:=` type inference; use
-the typed variants `maxi/mini/maxf/minf` (a real bug fixed in this project).
+Note: when using `:=`, `min()`/`max()` may produce a Variant type that is too
+broad for the intended static type; in cases where typed integer/float inference
+is required, use `mini/maxi/minf/maxf` (matching this project's established pattern).
 
 ### Annotations
 ```gdscript
@@ -173,4 +174,4 @@ avoid double-firing.
 - `connect("sig", self, "method")` is gone — use `signal.connect(callable)`.
 - `instance()` is now `instantiate()`.
 - `export`/`onready`/`tool` are now `@export`/`@onready`/`@tool`.
-- `min()`/`max()` return Variant — use `maxi/mini/maxf/minf` with `:=`.
+- When using `:=`, `min()`/`max()` may infer a Variant type that is too broad for the intended static type; use `mini/maxi/maxf/minf` when typed inference is required.

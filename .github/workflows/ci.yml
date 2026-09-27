@@ -27,12 +27,10 @@ jobs:
         run: python tools/solve_levels.py
       - name: Difficulty progression report
         run: python tools/difficulty_report.py
-      - name: Verify level set is reproducible from the generator
-        run: |
-          python tools/generate_levels.py --out /tmp/regen
-          # index.json must match the committed campaign (deterministic generation).
-          diff <(python -c "import json;print(json.dumps(json.load(open('levels/index.json')),sort_keys=True))") \
-               <(python -c "import json;print(json.dumps(json.load(open('/tmp/regen/index.json')),sort_keys=True))")
+      - name: Deterministic full-campaign reproduction (every file, byte-for-byte)
+        run: python tools/full_audit.py --only campaign
+      - name: Secret & signing-material scan (all git-tracked files)
+        run: python tools/full_audit.py --only secrets
 
   godot-runtime:
     name: Godot parse-check, conformance & boot

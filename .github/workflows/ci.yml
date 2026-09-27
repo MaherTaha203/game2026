@@ -56,6 +56,8 @@ jobs:
           fi
       - name: GDScript conformance tests
         run: ./godot --headless --path . --script tests/gdscript/run_tests.gd
+      - name: Full-campaign runtime test (all 210 levels load, solve, hint)
+        run: ./godot --headless --path . --script tests/gdscript/campaign_test.gd
       - name: Boot smoke test (no runtime errors)
         run: |
           timeout 8 ./godot --headless --path . 2>&1 | tee boot.log || true

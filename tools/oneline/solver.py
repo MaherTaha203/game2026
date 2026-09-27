@@ -13,31 +13,20 @@ from .graph import Graph, normalize_edge
 from .rules import trail_is_valid_solution
 
 
-def find_eulerian_trail(graph: Graph) -> Optional[List[int]]:
-    """Return an Eulerian trail (node sequence) or ``None`` if none exists.
+def _hierholzer(graph: Graph, start: int, used: Set[Tuple[int, int]]) -> List[int]:
+    """Stack-based Hierholzer from ``start`` over edges not in ``used`` (mutated).
 
-    Deterministic: neighbors are always explored in ascending id order and the
-    start vertex is chosen deterministically, so the same graph yields the same
-    trail (supports reproducible reference solutions).
+    Returns the node sequence of the trail it can build from ``start``. It covers
+    every not-yet-used edge iff an Eulerian trail with ``start`` as an endpoint
+    exists in the remaining graph; otherwise it returns a shorter walk (the caller
+    detects incomplete coverage). Deterministic: neighbors explored ascending.
     """
-    if not graph.has_eulerian_trail():
-        return None
-
-    odd = graph.odd_degree_nodes()
-    start = odd[0] if odd else min(graph.node_ids)
-
-    # Mutable adjacency as sorted lists we consume from.
-    adj: Dict[int, List[int]] = {
-        nid: sorted(graph.neighbors(nid)) for nid in graph.node_ids
-    }
-    used: Set[Tuple[int, int]] = set()
-
     stack = [start]
     circuit: List[int] = []
     while stack:
         v = stack[-1]
         advanced = False
-        for w in adj[v]:
+        for w in sorted(graph.neighbors(v)):
             key = normalize_edge(v, w)
             if key not in used:
                 used.add(key)
@@ -46,13 +35,49 @@ def find_eulerian_trail(graph: Graph) -> Optional[List[int]]:
                 break
         if not advanced:
             circuit.append(stack.pop())
-
     circuit.reverse()
+    return circuit
+
+
+def find_eulerian_trail(graph: Graph) -> Optional[List[int]]:
+    """Return an Eulerian trail (node sequence) or ``None`` if none exists.
+
+    Uses Hierholzer's algorithm (O(E)). Deterministic: the start vertex and
+    neighbor order are fixed, so the same graph yields the same trail.
+    """
+    if not graph.has_eulerian_trail():
+        return None
+    odd = graph.odd_degree_nodes()
+    start = odd[0] if odd else min(graph.node_ids)
+    circuit = _hierholzer(graph, start, set())
     if len(circuit) != graph.edge_count + 1:
-        return None  # graph not fully covered (should not happen if precheck passed)
+        return None  # should not happen once has_eulerian_trail() passed
     if not trail_is_valid_solution(graph, circuit):
         return None
     return circuit
+
+
+def find_completion(
+    graph: Graph, used_edges: Set[Tuple[int, int]], current: Optional[int]
+) -> List[int]:
+    """Return the remaining node sequence that completes the puzzle from the
+    current partial trail, or ``[]`` if the current state is a dead end.
+
+    O(E) Hierholzer over the unused edges starting at ``current``. Powers hints:
+    the first returned node is always a genuinely valid next move that keeps the
+    puzzle completable (docs/GAME_RULES.md §10). No search budget, so it cannot
+    time out on dense/expert levels.
+    """
+    if current is None:
+        odd = graph.odd_degree_nodes()
+        return [odd[0] if odd else min(graph.node_ids)]
+    remaining = graph.edge_count - len(used_edges)
+    if remaining <= 0:
+        return []
+    trail = _hierholzer(graph, current, set(used_edges))
+    if len(trail) != remaining + 1:
+        return []  # cannot cover all remaining edges from here -> dead end
+    return trail[1:]
 
 
 def count_eulerian_trails(graph: Graph, cap: int = 512, max_steps: int = 60000) -> int:
